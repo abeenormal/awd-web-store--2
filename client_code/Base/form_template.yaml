@@ -9,7 +9,8 @@ components:
     name: my_courses
     properties: {icon: 'fa:book', text: My Courses}
     type: Link
-  - layout_properties: {}
+  - event_bindings: {click: sign_in_click}
+    layout_properties: {}
     name: sign_in
     properties: {icon: 'fa:sign-in', text: Sign In}
     type: Link

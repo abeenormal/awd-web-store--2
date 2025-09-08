@@ -1,6 +1,7 @@
 allow_embedding: false
-name: Material Design 1
-package_name: Material_Design_1
+metadata: {description: 'Web store for Advanced Web Design ', logo_img: 'asset:Columbia State Logo cropped.png', title: AWD Web Store}
+name: AWD Web Store
+package_name: AWD_Web_Store
 runtime_options:
   client_version: '3'
   server_spec: {base: python310-minimal}
@@ -10,4 +11,5 @@ services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/tables.yml
-startup_form: Form1
+startup: {module: Base, type: form}
+startup_form: null

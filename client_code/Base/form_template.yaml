@@ -1,0 +1,29 @@
+components:
+- layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+- components:
+  - event_bindings: {click: my_courses_click}
+    layout_properties: {}
+    name: my_courses
+    properties: {icon: 'fa:book', text: My Courses}
+    type: Link
+  - layout_properties: {}
+    name: sign_in
+    properties: {icon: 'fa:sign-in', text: Sign In}
+    type: Link
+  layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+- data_bindings: []
+  event_bindings: {click: title_click}
+  layout_properties: {slot: top-left-btn}
+  name: title
+  properties: {icon: _/theme/Columbia%20State%20Logo%20cropped.png, text: 'AWD Web Store '}
+  type: Link
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

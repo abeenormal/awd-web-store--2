@@ -10,46 +10,40 @@ import anvil.users
 from ..Home import Home
 from ..MyCourses import MyCourses 
 
-
 class Base(BaseTemplate):
   def __init__(self, **properties):
 
+   
+
     def change_sign_in_text(self):
-      user = anvil.users.get_user
-      if user:
-        email = user["email"]
-        self.sign_in.text = email
-      else:
-        self.sign_in.text = "Sign In"
-        
+     user = anvil.users.get_user
+     if user:
+       email = user["email"]
+       self.sign_in.text = email
+     else:
+      self.sign_in.text = "Sign In"
+
+      self.toggle_my_courses_link()
+
+
+    def toggle_my_courses_link(self):
+     self.my_courses.visible = anvil.users.get_user()  != none
+
     self.content_panel.add_component(Home()) 
-    # Set Form properties and Data Bindings.
+  # Set Form properties and Data Bindings.  
     self.init_components(**properties)
-  
 
-    # Any code you write here will run before the form opens.
 
-  def change_sign_in_text(self):
-    user = anvil.users.get_user()
-    if user:
-      email = user["email"]
-      self.sign_in_text = email
-    else:
-      self.change_sign_in_text = "Sign In"
 
-    self.toggle_my_courses_link()
-
-  def toggle_my_courses_link(self):
-    self.my_courses.visible = anvil.users.get_user() != None
-    
+  # Any code you write here will run before the form opens.
   def my_courses_click(self, **event_args):
     """This method is called when the link is clicked"""
     self.content_panel.clear()
     self.content_panel.add_component (MyCourses())
 
-    def go_to_home(self):
-      self.content_panel.clear()
-      self.content_panel.add_component(Home())
+  def go_to_home(self):
+    self.content_panel.clear()
+    self.content_panel.add_component(Home())
 
   def title_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -57,13 +51,14 @@ class Base(BaseTemplate):
 
   def sign_in_click(self, **event_args):
     """This method is called when the link is clicked"""
+    anvil.users.login_with_form()
     user = anvil.users.get_user()
-    if user:
-      logout = confirm("Would you like to logout?")
-      if logout:
-        anvil.users.logout()
-        self.go_to_home()
-    else:
-     anvil.users.login_with_form() 
-     self.change_sign_in_text()
 
+    if user:
+     logout = confirm("Would you like to logout?")
+    if logout:
+      anvil.users.logout()
+      self.go_to_home()
+    else:
+     anvil.users.login_with_form()
+    self.change_sign_in_text()

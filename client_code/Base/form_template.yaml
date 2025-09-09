@@ -1,13 +1,14 @@
 components:
-- layout_properties: {slot: default}
+- components: []
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
 - components:
-  - event_bindings: {click: my_courses_click}
+  - event_bindings: {click: my_courses_link_click}
     layout_properties: {}
-    name: my_courses
-    properties: {icon: 'fa:book', text: My Courses, visible: false}
+    name: my_courses_link
+    properties: {align: right, icon: 'fa:book', text: My Courses, visible: false}
     type: Link
   - event_bindings: {click: sign_in_click}
     layout_properties: {}

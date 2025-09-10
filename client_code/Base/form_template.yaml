@@ -5,16 +5,22 @@ components:
   properties: {}
   type: ColumnPanel
 - components:
-  - components:
-    - event_bindings: {click: log_out_button_click}
-      layout_properties: {grid_position: 'AIFPLZ,PGJQAV'}
-      name: log_out_button
-      properties: {text: Sign Out, visible: true}
-      type: Button
-    event_bindings: {click: sign_in_click}
+  - event_bindings: {click: my_course_click}
     layout_properties: {}
+    name: my_course
+    properties: {italic: true, text: My Courses, visible: false}
+    type: Link
+  - event_bindings: {click: log_out_button_click}
+    layout_properties: {}
+    name: log_out_button
+    properties: {font_size: 19, foreground: 'theme:White', icon: 'fa:sign-out', italic: true, text: Sign Out, visible: false}
+    type: Button
+  - components: []
+    data_bindings: []
+    event_bindings: {click: sign_in_click}
+    layout_properties: {width: null}
     name: sign_in
-    properties: {icon: 'fa:sign-in', text: Sign In}
+    properties: {icon: 'fa:sign-in', italic: true, text: Sign In}
     type: Link
   layout_properties: {slot: nav-right}
   name: navbar_links

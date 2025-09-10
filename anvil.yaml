@@ -30,8 +30,8 @@ db_schema:
     server: full
     title: Users
 metadata: {description: 'Web store for Advanced Web Design ', logo_img: 'asset:Columbia State Logo cropped.png', title: AWD Web Store}
-name: 'AWD Web Store #2 clone'
-package_name: AWD_Web_Store__2_clone
+name: 'AWD Web Store #3 Users'
+package_name: AWD_Web_Store__3_Users
 runtime_options:
   client_version: '3'
   server_spec: {base: python310-minimal}

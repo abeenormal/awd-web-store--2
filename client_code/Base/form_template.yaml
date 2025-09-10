@@ -5,12 +5,13 @@ components:
   properties: {}
   type: ColumnPanel
 - components:
-  - event_bindings: {click: my_courses_link_click}
-    layout_properties: {}
-    name: my_courses_link
-    properties: {align: right, icon: 'fa:book', text: My Courses, visible: false}
-    type: Link
-  - event_bindings: {click: sign_in_click}
+  - components:
+    - event_bindings: {click: log_out_button_click}
+      layout_properties: {grid_position: 'AIFPLZ,PGJQAV'}
+      name: log_out_button
+      properties: {text: Sign Out, visible: true}
+      type: Button
+    event_bindings: {click: sign_in_click}
     layout_properties: {}
     name: sign_in
     properties: {icon: 'fa:sign-in', text: Sign In}

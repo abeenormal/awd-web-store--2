@@ -11,4 +11,5 @@ unique_ids:
     MyCourses: '175734890354257841370568.06282'
   modules: {}
   scripts: {}
-  server_modules: {}
+  server_modules:
+    CourseDetails: '1757604132905381822346395.6233'

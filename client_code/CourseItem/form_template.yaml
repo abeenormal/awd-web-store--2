@@ -34,5 +34,6 @@ properties:
 - {default_value: '', important: true, name: description, type: string}
 - {default_value: '', important: true, name: button_text, type: string}
 toolbox_item:
+  hidden: true
   icon: {}
   title: CourseCard

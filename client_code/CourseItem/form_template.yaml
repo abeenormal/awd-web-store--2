@@ -1,0 +1,38 @@
+components:
+- components:
+  - layout_properties: {grid_position: 'FDRPTV,HOWMSX'}
+    name: name_label
+    properties: {align: center, content: name, font_size: 30}
+    type: RichText
+  - layout_properties: {grid_position: 'ZBFJTQ,XMAUYK'}
+    name: image_content
+    properties: {}
+    type: Image
+  - layout_properties: {grid_position: 'PJWRDT,MNYOOU'}
+    name: description_label
+    properties:
+      align: center
+      content: |
+        description
+      font_size: 20
+    type: RichText
+  - layout_properties: {grid_position: 'PABJPU,OBEUMS'}
+    name: button
+    properties: {bold: true, role: primary-color, text: button_1}
+    type: Button
+  layout_properties: {grid_position: 'LMUSON,KMGVLF'}
+  name: content_panel
+  properties: {role: card}
+  type: ColumnPanel
+container: {type: ColumnPanel}
+custom_component: true
+is_package: true
+properties:
+- {default_binding_prop: true, default_value: '', important: true, name: name, type: string}
+- {default_value: '', important: true, name: image, type: string}
+- {important: true, name: button_callback, type: object}
+- {default_value: '', important: true, name: description, type: string}
+- {default_value: '', important: true, name: button_text, type: string}
+toolbox_item:
+  icon: {}
+  title: CourseCard

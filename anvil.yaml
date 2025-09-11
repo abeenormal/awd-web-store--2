@@ -45,7 +45,7 @@ db_schema:
       name: signed_up
       type: datetime
     - admin_ui: {order: 8, width: 200}
-      name: Column9
+      name: Purchaced Courses.
       type: simpleObject
     server: full
     title: Users

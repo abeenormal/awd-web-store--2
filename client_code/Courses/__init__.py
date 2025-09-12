@@ -30,7 +30,6 @@ class Courses(CoursesTemplate):
   
     
     
-    
    
    
     self.content_panel.add_component(course_panel)

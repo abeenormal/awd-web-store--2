@@ -23,16 +23,17 @@ class Courses(CoursesTemplate):
   def load_courses(self):
     courses = anvil.server.call("get_course_details").search()
     course_panel = GridPanel()
+    self.content_panel.add_component(course_panel)
 
     for i, course in enumerate(courses):
       c = CourseItem(name=course["name"], button_text=f"Purchase for ${course['price']}", description=course["description"], image=course["image"], button_callback=None)
-    self.content_panel.add_component(c, row=str(i//2), width_xs=6)
+      course_panel.add_component(c, row=str(i//2), width_xs=6)
   
     
     
    
    
-    self.content_panel.add_component(course_panel)
+    
     
       
    

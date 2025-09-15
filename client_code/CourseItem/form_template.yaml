@@ -16,7 +16,8 @@ components:
         description
       font_size: 20
     type: RichText
-  - layout_properties: {grid_position: 'PABJPU,OBEUMS'}
+  - event_bindings: {click: button_click}
+    layout_properties: {grid_position: 'PABJPU,OBEUMS'}
     name: button
     properties: {bold: true, role: primary-color, text: button_1}
     type: Button

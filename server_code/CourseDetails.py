@@ -14,7 +14,12 @@ import anvil.server
 # them with @anvil.server.callable.
 # Here is an example - you can replace it with your own:
 #
+
 @anvil.server.callable
-def get_course_details():
+def get_course_details(course_name):
+  return app_tables.courses.get(id_name = course_name)
+  
+@anvil.server.callable
+def get_all_courses():
   return app_tables.courses.client_readable()
   

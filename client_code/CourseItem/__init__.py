@@ -19,6 +19,7 @@ class CourseItem(CourseItemTemplate):
     self.description_label.content = description
     self.button.text = button_text
     self.image_content.source = image
+    self.button_callback = button_callback
 
     
 

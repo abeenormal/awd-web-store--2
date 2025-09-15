@@ -16,7 +16,7 @@ class Checkout(CheckoutTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.update_form(id_name)
-   
+    
   
    
     # Any code you write here will run before the form opens.
@@ -28,11 +28,14 @@ class Checkout(CheckoutTemplate):
     self.description_label.text = course['description']
     self.price_label.text = f"${course['price']} USD"
     self.image_content.source = course['image']
+  
+    
    
 
   def back_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.back_button_callback()
+    
 
   def buy_click(self, **event_args):
     """This method is called when the button is clicked"""

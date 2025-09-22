@@ -13,7 +13,7 @@ import stripe
 
 
 class Checkout(CheckoutTemplate):
-  def __init__(self,id_name, button_callback, **properties):
+  def __init__(self,id_name, **properties):
     
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -43,15 +43,15 @@ class Checkout(CheckoutTemplate):
 
   def buy_click(self, **event_args):
     """This method is called when the button is clicked"""
-    if anvil.users.get_user() ==None:
-      anvil.users.login_with_form()
     
+    if anvil.users.get_user() is None:
+      anvil.users.login_with_form()
+
     user = anvil.users.get_user()
     if user is None:
      return
     alert("Please sign in!")
-    
-    
+        
     if user["purchased_courses"] and self.course["id_name"]in user["purchased_courses"]:
      return
     alert("You already own this course!")

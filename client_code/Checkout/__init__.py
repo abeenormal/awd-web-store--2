@@ -36,20 +36,17 @@ class Checkout(CheckoutTemplate):
     
    
 
-  def back_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    self.back_button_callback()
-    
+  
 
   def buy_click(self, **event_args):
     """This method is called when the button is clicked"""
-    
+   
     if anvil.users.get_user() is None:
       anvil.users.login_with_form()
 
     user = anvil.users.get_user()
     if user is None:
-     return
+       return
     alert("Please sign in!")
         
     if user["purchased_courses"] and self.course["id_name"]in user["purchased_courses"]:
@@ -63,3 +60,7 @@ class Checkout(CheckoutTemplate):
       alert("Success")
     except Exception as e:
       alert(str(e))
+
+  def back_button_click(self, **event_args):
+   """This method is called when the button is clicked"""
+   self.back_button_callback()

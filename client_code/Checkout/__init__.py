@@ -18,7 +18,7 @@ class Checkout(CheckoutTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.update_form(id_name)
-    self.buy(self)
+    
     
     
     

@@ -23,7 +23,7 @@ class Checkout(CheckoutTemplate):
   
    
     # Any code you write here will run before the form opens.
-    
+
 
   def update_form(self,id_name):
     course = anvil.server.call('get_course_details', id_name)
@@ -31,29 +31,21 @@ class Checkout(CheckoutTemplate):
     self.name_label.content = course["name"]
     self.description_label.text = course['description']
     self.price_label.text = f"${course['price']} USD"
-    self.image_content.source = course['image']
-  
-    
-   
-
-  def back_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    self.back_button_callback()
+    self.image_content.source = course['image'] 
     
 
   def buy_click(self, **event_args):
     """This method is called when the button is clicked"""
-  if anvil.users.get_user() is None:
-    anvil.users.login_with_form()
-    
+    if anvil.users.get_user() is None:
+     anvil.users.login_with_form()
     user = anvil.users.get_user()
     if user is None:
-     return
-     alert("Please sign in!")
+      alert("Please sign in!")
+      return
     
     
-  if user["purchased_courses"] and self.course["id_name"]in user["purchased_courses"]:
-    alert("You already own this course!")
+    if user["purchased_courses"] and self.course["id_name"]in user["purchased_courses"]:
+     alert("You already own this course!")
     return
     
     token, info=stripe.checkout.get_token(amount= self.course["price"]*100, currency="USD",title=self.course["name"], description=self.course["description"])
@@ -62,3 +54,6 @@ class Checkout(CheckoutTemplate):
       alert("Success")
     except Exception as e:
       alert(str(e))
+  def back_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.button_callback()  

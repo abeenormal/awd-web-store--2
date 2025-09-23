@@ -33,14 +33,8 @@ class Checkout(CheckoutTemplate):
     self.price_label.text = f"${course['price']} USD"
     self.image_content.source = course['image']
   
-    
-   
-
-  
-
   def buy_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    
+    """This method is called when the button is clicked"""    
     if anvil.users.get_user() is None:
       anvil.users.login_with_form()
 
@@ -53,7 +47,7 @@ class Checkout(CheckoutTemplate):
      alert("You already own this course!")
     return
     
-    token, info=stripe.checkout.get_token(amount= self.course["price"]*100, currency="USD",title=self.course["name"], description=self.course["description"])
+    token, info=stripe.checkout.get_token(amount= self.course["price"]*100, currency="USD", title=self.course["name"], description=self.course["description"])
     try:
       anvil.server.call("charge_user", token, user["email"], self.course["id_name"])
       alert("Success")
@@ -62,4 +56,7 @@ class Checkout(CheckoutTemplate):
 
   def back_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass
+    self.back_button_callback()
+
+ 
+  

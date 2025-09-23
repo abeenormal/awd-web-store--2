@@ -18,7 +18,8 @@ class Checkout(CheckoutTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.update_form(id_name)
-
+    
+    
 
 
 
@@ -47,9 +48,10 @@ class Checkout(CheckoutTemplate):
     if user["purchased_courses"] and self.course["id_name"]in user["purchased_courses"]:
       alert("You already own this course!")
     return
-
+  
     token, info=stripe.checkout.get_token(amount= self.course["price"]*100, currency="USD",title=self.course["name"], description=self.course["description"])
     try:
+      stripe.checkout.charge()
       anvil.server.call("charge_user", token, user["email"], self.course["id_name"])
       alert("Success")
     except Exception as e:

@@ -13,11 +13,11 @@ import stripe
 
 
 class Checkout(CheckoutTemplate):
-  def __init__(self,id_name, button_callback, **properties):
+  def __init__(self,id_name, **properties):
 
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    self.update_form(id_name)
+    self.update_form('id_name')
     
     
 
@@ -29,30 +29,19 @@ class Checkout(CheckoutTemplate):
 
 
   def update_form(self,id_name):
-    course = anvil.server.call('get_course_details', id_name)
-    self.course = course
-    self.name_label.content = course["name"]
+    course = anvil.server.call('get_course_details')
+    self.name_label.content = course['id_name']
     self.description_label.text = course['description']
     self.price_label.text = f"${course['price']} USD"
     self.image_content.source = course['image'] 
-
+    
 
   def buy_click(self, **event_args):
     """This method is called when the button is clicked"""
     user = anvil.users.get_user()
-    if anvil.users.get_user() is None:
-       alert("Please sign in!")
-       anvil.users.login_with_form()   
-    return
-
-   
-    if user["purchased_courses"] and self.course["id_name"]in user["purchased_courses"]:
-      alert("You already own this course!")
-    return
-  
+    stripe.checkout.charge()
     token, info=stripe.checkout.get_token(amount= self.course["price"]*100, currency="USD",title=self.course["name"], description=self.course["description"])
     try:
-      stripe.checkout.charge()
       anvil.server.call("charge_user", token, user["email"], self.course["id_name"])
       alert("Success")
     except Exception as e:
@@ -60,4 +49,4 @@ class Checkout(CheckoutTemplate):
 
   def back_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass
+    self.button_callback()

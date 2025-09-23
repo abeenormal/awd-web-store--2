@@ -27,7 +27,7 @@ class Courses(CoursesTemplate):
   
   def render_checkout(self, course_name):
     self.content_panel.clear()
-    self.content_panel.add_component(Checkout(course_name, self.back))
+    self.content_panel.add_component(Checkout("id_name"))
   
   def load_courses(self):
     courses = anvil.server.call("get_all_courses").search()
@@ -35,7 +35,7 @@ class Courses(CoursesTemplate):
     self.content_panel.add_component(course_panel)
 
     for i, course in enumerate(courses):
-      c = CourseItem(name=course["name"], button_text=f"Purchase for ${course['price']}", description=course["description"], image=course["image"], button_callback=self.render_checkout)
+      c = CourseItem(name=course["name"], button_text=f"Purchase for ${course['price']}", description=course["description"], image=course["image"], button_callback = self.render_checkout('course_name'))
       course_panel.add_component(c, row=str(i//2), width_xs=6)
   
     

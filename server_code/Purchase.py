@@ -15,7 +15,8 @@ def charge_user(token, email, course_name):
   user = anvil.users.get_user()
   
   if user["purchase_courses"] is None:
-     user["purchased_courses"]=[]
+    
+      user["purchased_courses"]=[]
 
   if course_name in user["purchased_courses"]:
    return

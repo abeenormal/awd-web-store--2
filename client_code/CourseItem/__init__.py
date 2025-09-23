@@ -22,12 +22,6 @@ class CourseItem(CourseItemTemplate):
     self.image_content.source = image
     self.button_callback = button_callback
 
-    
-
-    
-    
-   
-
     # Any code you write here will run before the form opens.
 
   def button_click(self, **event_args):

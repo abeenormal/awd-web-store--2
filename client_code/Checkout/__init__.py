@@ -14,16 +14,16 @@ import stripe
 
 class Checkout(CheckoutTemplate):
   def __init__(self,id_name, button_callback, **properties):
-    
+
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.update_form(id_name)
-    
-    
-    
-    
-  
-   
+
+
+
+
+
+
     # Any code you write here will run before the form opens.
 
 
@@ -34,23 +34,20 @@ class Checkout(CheckoutTemplate):
     self.description_label.text = course['description']
     self.price_label.text = f"${course['price']} USD"
     self.image_content.source = course['image'] 
-    
+
 
   def buy_click(self, **event_args):
     """This method is called when the button is clicked"""
     if anvil.users.get_user() is None:
-       anvil.users.login_with_form()
-      
-    user = anvil.users.get_user()   
-    if user is None:
       alert("Please sign in!")
-      return
-    
-    
-    if user["purchased_courses"] and self.course["id_name"]in user["purchased_courses"]:
-     alert("You already own this course!")
+      anvil.users.login_with_form()
     return
-    
+
+    user = anvil.users.get_user()
+    if user["purchased_courses"] and self.course["id_name"]in user["purchased_courses"]:
+      alert("You already own this course!")
+    return
+
     token, info=stripe.checkout.get_token(amount= self.course["price"]*100, currency="USD",title=self.course["name"], description=self.course["description"])
     try:
       anvil.server.call("charge_user", token, user["email"], self.course["id_name"])
@@ -61,4 +58,3 @@ class Checkout(CheckoutTemplate):
   def back_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     pass
-  

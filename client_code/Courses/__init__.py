@@ -14,12 +14,12 @@ from ..Checkout import Checkout
 
 class Courses(CoursesTemplate):
   def __init__(self, **properties):
-
+     
   
     # Set Form properties and Data Bindings.
-    self.init_components(**properties)    
-    self.load_courses()
-    self.render_checkout('course_name')
+     self.init_components(**properties)    
+     self.load_courses()
+ 
    
      # Any code you write here will run before the form opens.
  

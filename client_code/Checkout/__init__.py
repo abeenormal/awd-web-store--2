@@ -39,12 +39,13 @@ class Checkout(CheckoutTemplate):
 
   def buy_click(self, **event_args):
     """This method is called when the button is clicked"""
+    user = anvil.users.get_user()
     if anvil.users.get_user() is None:
-      alert("Please sign in!")
-      anvil.users.login_with_form()
+       alert("Please sign in!")
+       anvil.users.login_with_form()   
     return
 
-    user = anvil.users.get_user()
+   
     if user["purchased_courses"] and self.course["id_name"]in user["purchased_courses"]:
       alert("You already own this course!")
     return

@@ -11,31 +11,36 @@ from anvil.tables import app_tables
 import anvil.users
 from ..CourseItem import CourseItem
 from ..Checkout import Checkout
-from ..Courses import Courses
+
 
 class Courses(CoursesTemplate):
   def __init__(self, **properties):
       
     # Set Form properties and Data Bindings.
-     self.init_components(**properties)    
+     self.init_components(**properties)
      self.load_courses()
- 
-   
-     # Any code you write here will run before the form opens.
 
   def back(self):
     self.content_panel.clear()
     self.load_courses()   
-    
+
   def render_checkout(self, course_name):
     self.content_panel.clear()
-    self.content_panel.add_component(Checkout(course_name)) 
+    self.content_panel.add_component(Checkout(course_name, self.back))  
+   
+   
     
   def load_courses(self):
-    courses = anvil.server.call("get_all_courses").search()
-    course_panel = GridPanel()
-    self.content_panel.add_component(course_panel)
+      courses = anvil.server.call("get_all_courses").search()
+      course_panel = GridPanel()
+      self.content_panel.add_component(course_panel)
 
-  for i, course in enumerate(courses):
-    c = CourseItem(name=course["name"], button_text=f"Purchase for ${course['price']}", description=course["description"], image=course["image"], button_callback=render_checkout(self, course_name))
-    course_panel.add_component(c, row=str(i//2), width_xs=6)
+  for i, course in enumerate(Courses):
+     c = CourseItem(name=course["name"], button_text=f"Purchase for ${course['price']}", description=course["description"], image=course["image"], button_callback= self.render_checkout(self, course_name))
+     course_panel.add_component(c, row=str(i//2), width_xs=6)
+
+ 
+
+  
+
+  

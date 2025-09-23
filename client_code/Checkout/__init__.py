@@ -13,7 +13,7 @@ import stripe
 
 
 class Checkout(CheckoutTemplate):
-  def __init__(self,id_name, **properties):
+  def __init__(self, back_button_callback,id_name, **properties):
     
     # Set Form properties and Data Bindings.
     self.init_components(**properties)

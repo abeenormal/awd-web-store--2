@@ -20,6 +20,7 @@ class Checkout(CheckoutTemplate):
     self.update_form(id_name)
     
     
+    
   
    
     # Any code you write here will run before the form opens.
@@ -54,6 +55,4 @@ class Checkout(CheckoutTemplate):
       alert("Success")
     except Exception as e:
       alert(str(e))
-  def back_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    self.button_callback()  
+  

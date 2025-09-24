@@ -15,21 +15,15 @@ class CourseItem(CourseItemTemplate):
   def __init__(self, name, description, button_text, image, button_callback, **properties):
 
     # Set Form properties and Data Bindings.
-    self.init_components(**properties)
+    self.init_components(self, **properties)
     self.name_label.content = name
     self.description_label.content = description
     self.button.text = button_text
     self.image_content.source = image
-    
-
-    
-
-    
-    
-   
 
     # Any code you write here will run before the form opens.
 
   def button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.button_callback()
+    self.button_callback(self.name_label.content.lower())
+   

@@ -21,4 +21,4 @@ class Home(HomeTemplate):
   def view_courses_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.content_panel.clear() 
-    self.content_panel.add_component(Courses(self.id_name))
+    self.content_panel.add_component(Courses('id_name'))

@@ -34,7 +34,6 @@ class Courses(CoursesTemplate):
      course_panel = GridPanel()
      
 
-     for i, course in enumerate(courses):
-       
-      c = CourseItem(name=course["name"], button_text=f"Purchase for ${course['price']}", description=course["description"], image=course["image"], button_callback=self.render_course)
+     for i, course in enumerate(courses):       
+      c = CourseItem(name=course["name"], button_text=f"Purchase for ${course['price']}", description=course["description"], image=course["image"], (button_callback))
       course_panel.add_component(c, row=str(i//2), width_xs=6)     

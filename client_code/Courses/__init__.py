@@ -13,7 +13,7 @@ from ..CourseItem import CourseItem
 from ..Checkout import Checkout
 
 class Courses(CoursesTemplate):
-  def __init__(self, **properties):
+  def __init__(self, id_name, **properties):
 
   
     # Set Form properties and Data Bindings.
@@ -27,7 +27,7 @@ class Courses(CoursesTemplate):
   
   def render_checkout(self, course_name):
     self.content_panel.clear()
-    self.content_panel.add_component(Checkout())
+    self.content_panel.add_component(Checkout('id_name'))
   
   def load_courses(self):
     courses = anvil.server.call("get_all_courses").search()

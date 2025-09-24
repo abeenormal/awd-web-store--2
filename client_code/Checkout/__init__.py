@@ -47,10 +47,9 @@ class Checkout(CheckoutTemplate):
     anvil.users.login_with_form()
     
     user = anvil.users.get_user()
-    if user is None:
-     return
+    if user is None:    
      alert("Please sign in!")
-    
+     return
     
   if user["purchased_courses"] and self.course["id_name"]in user["purchased_courses"]:
     alert("You already own this course!")

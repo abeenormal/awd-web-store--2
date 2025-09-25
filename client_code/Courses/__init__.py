@@ -18,7 +18,7 @@ class Courses(CoursesTemplate):
       
     # Set Form properties and Data Bindings.
      self.init_components(**properties)
-     
+     self.load_courses()
 
   def back(self):
      self.content_panel.clear()

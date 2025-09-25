@@ -14,11 +14,11 @@ from ..Checkout import Checkout
 
 
 class Courses(CoursesTemplate):
-  def __init__(self,id_name,**properties):
+  def __init__(self,id_name, **properties):
       
     # Set Form properties and Data Bindings.
      self.init_components(**properties)
-     self.load_courses()
+     
 
   def back(self):
      self.content_panel.clear()
@@ -35,5 +35,5 @@ class Courses(CoursesTemplate):
      
 
      for i, course in enumerate(courses):       
-      c = CourseItem(name=course["name"], button_text=f"Purchase for ${course['price']}", description=course["description"], image=course["image"], (button_callback))
+      c = CourseItem(name=course["name"], button_text=f"Purchase for ${course['price']}", description=course["description"], image=course["image"], button_callback=self.render_checkout)
       course_panel.add_component(c, row=str(i//2), width_xs=6)     

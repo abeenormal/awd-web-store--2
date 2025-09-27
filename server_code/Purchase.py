@@ -13,7 +13,7 @@ def charge_user(token, email, course_name):
   stripe_customer = anvil.stripe.new_customer(email, token)
   price = app_tables.courses.get(id_name=course_name)['price']
   user = anvil.users.get_user()
-  if user["purchase_courses"] == None:
+  if user["purchase_courses"] is None:
     user["purchased_courses"]=[]
 
     if course_name in user["purchased_courses"]:
